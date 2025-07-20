@@ -1,0 +1,312 @@
+<!DOCTYPE <html>
+ <html lang="bs">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Moj put ka miru i lagodnosti | 20.07.2025</title>
+       <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fff8f0;
+            color: #4a3c31;
+            max-width: 720px;
+            margin: 40px auto;
+            padding: 20px 30px;
+            line-height: 1.8;
+            box-shadow: 0 0 20px rgba(166, 124, 82, 0.2);
+            border-radius: 12px;
+        }
+
+            h1 {
+                font-size: 2,6rem;
+                color: #a67c52;
+                margin-bottom: 8px;
+                text-align: center;
+                font-weight: 700;
+                letter-spacing: 1.5px;
+
+            }
+
+            .date {
+                font-size: 1rem;
+                color: #8c6d3f;
+                margin-bottom: 40px;
+                text-align: center;
+                font-style: italic;
+            }
+
+            p {
+                font-size: 1.18rem;
+                margin-bottom: 1,6rem;
+                text-align: justify;
+            }
+
+            .affirmations {
+                background-color: #f2e8dc;
+                border-left: 6px solid #a67c52;
+                padding: 20px 25px;
+                margin: 30px 0;
+                font-style: italic;
+                font-size: 1.15rem;
+                color: #6b553f;
+                border-radius: 6px;
+            }
+
+            footer {
+                margin-top: 60px;
+                font-size: 0.85rem;
+                color: #a67c52;
+                text-align: center;
+                border-top: 1px solid #e2c9a1;
+                padding-top: 15px;
+            }
+
+            /*Slike */
+            .image-container {
+                text-align: center;
+                margin: 30px 0 50px;
+            }
+
+            .image-container img {
+                max-width: 100%;
+                border-radius: 15px;
+                box-shadow: 0 0 15px rgba(166, 124, 82, 0.3);
+            }
+
+            /*Dugme dnevnik zahvalnosti*/
+            #gratitudeBtn {
+                display: block;
+                margin: 30px auto;
+                padding: 12px 30px;
+                background-color: #a67c52;
+                color: white;
+                font-size: 1.1rem;
+                border: none;
+                border-radius: 30px;
+                cursor: pointer;
+                box-shadow: 0 5px 10px rgba(166, 124, 82, 0.5);
+                transition: background-color 0.3s ease;
+
+            }
+
+
+            #gratitudeBtn:hover {
+                background-color: #c19f6f;
+            }
+
+            /*Prostor za dnevnik*/
+            #gratitudeSection {
+                display: none;
+                margin: 20px 0 50px;
+                background-color: #f9f4e9;
+                border: 2px solid #a67c52;
+                padding: 20px 50px;
+                border-radius: 10px;
+            }
+
+            #gratitudeInput {
+                width: 1000px;
+                max-width: 100%;
+                height: 100px;
+                font-size: 1rem;
+                padding: 15px 20px;
+                border-radius: 12px;
+                border: 1.5px solid #a67c52;
+                resize: none;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                transition: all 0.3s ease-in-out;
+
+            }
+
+            #gratitudeInput:focus {
+                border-color: #a67c52;
+                outline: none;
+                box-shadow: 0 0 6px rgba(166, 124, 82, 0.2);
+            }
+
+            #saveGratitudeBtn {
+                padding: 10px 25px;
+                background-color: #a67c52;
+                color: white;
+                font-size: 1rem;
+                border: none;
+                border-radius: 25px;
+                cursor: pointer;
+                box-shadow: 0 3px 8px rgba(166, 124, 82, 0.5);
+                transition: background-color 0.3s ease;
+            }
+
+            #savedGratitudeBtn:hover {
+                background-color: #c19f6f;
+            }
+
+            #gratitudeSavedMsg {
+                margin-top: 10px;
+                color: #6b553f;
+                font-style: italic;
+                font-size: 0.9rem;
+            }
+
+            /*Komentari*/
+            #commentSection {
+                margin-top: 40px;
+                border-top: 1px solid #e2c9a1;
+                padding-top: 30px;
+            }
+
+            #commentTitle {
+                font-size: 1.5rem;
+                color: #a67c52;
+                margin-bottom: 15px;
+            }
+
+            #commentInput {
+                width: 100%;
+                min-height: 70px;
+                padding: 12px 15px;
+                font-size: 1rem;
+                border-radius: 8px;
+                border: 1.5px solid #a67c52;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin-bottom: 12px;
+                resize: vertical;
+            }
+
+
+            #addCommentBtn {
+              background-color: #a67c52;
+              color: white;
+              border: none;
+              border-radius: 25px;
+              padding: 10px 25px;
+              font-size: 1rem;
+              cursor: pointer;
+              box-shadow: 0 3px 8px rgba(166, 124, 82, 0.5);
+              transition: background-color 0.3s ease;
+            }
+
+            #addCommentBtn:hover {
+                background-color: #c19f6f;
+            }
+
+            #commentsList {
+                margin-top: 20px;
+                list-style-type: none;
+                padding-left: 0;
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            #commentsList li {
+                background-color: #f2e8dc;
+                border-left: 4px solid #a67c52;
+                margin-bottom: 12px;
+                padding: 12px 20px;
+                border-radius: 6px;
+                font-style: italic;
+                color: #6b553f;
+                word-wrap: break-word;
+            }
+       </style>  
+       </head>
+    <body>
+        <h1>Moj put ka miru i lagodnosti</h1>
+        <div class="date">20.07.2025</div>
+
+        <p>Dobrodošli na prvo poglavlje mog digitalnog dnevnika - mjesta gdje ćemo zajedno otkrivati kako se uspostavlja istinski mir i lagodnost u svakodnevnom životu.
+            Ovdje neću pisati samo o rutinama, već o osjećajima, mislima i malim čarolijama koje nas vode ka unutrašnjoj tišini i blaženstvu.
+        </p>
+
+        <p>Svaki dan je nova prilika da se povežemo sa sobom, da damo sebi dozvolu da zastanemo i osjetimo. Da se odmorimo od buke svijeta i pronađemo ono što nas ispunjava i liječi.
+            Ovaj prostor je posvećen svima nama koji tragamo za toplinom, ravnotežom i  blagostanjem, a ne savršenstvom. Jer istinski mir ne dolazi od spolja,nego iznutra.
+        </p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Mirna priroda-sunčeva svjetlost kroz drveće" /> 
+               </div>
+
+               <p>
+                Želim da zajedno naučimo kako da gradimo male rituale koji će nas svakodnevno obnavljati - bilo da je to topla šolja čaja, par minuta svjesnog disanja ili pisanje zahvalnosti.
+                Nije važno koliko imamo vremena, nego koliko smo spremni da u tišini pažnje prisustvujemo sebi. 
+               </p>
+
+               <p>
+                U trenucima kada osjetimo nemir, podsjetimo se da smo sigurni i zaštićeni. Unutrašnji mir nije odsustvo buke,već snaga da pronađemo svjetlost i u tami.
+                Sjeti se da svaka misao i osjećaj prolaze poput oblaka - ne moraju zauvijek ostati sa nama.
+               </p>
+
+              <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=80" alt="Topla kućna atmosfera - svijeće i knjiga" />
+              </div> 
+
+              <div class="affirmations">
+                <p><strong>Afirmacije za danas:</strong></p>
+                <p>"Ja sam dovoljna. Svaki trenutak mi donosi novi mir. Otvaram se nježnosti prema sebi i dopuštam sebi da budem u potpunosti."</p>
+              </div>
+
+              <button id="gratitudeBtn" aria-expanded="false" aria-controls="gratitudeSection">Otvorite dnevnik zahvalnosti</button><br><br>
+              <section id="gratitudeSection" aria-hidden="true"><br>
+              <textarea id="gratitudeInput" placeholder="Napišite za šta ste danas zahvalni..." aria-label="Dnevnik zahvalnosti"></textarea><br><br>
+              <button id="saveGratitudeBtn">Sačuvajte zahvalnost</button>
+              <div id="gratitudeSavedMsg" role="status" aria-live="polite"></div>
+              </section>  
+              
+              <div id="commentsSection">
+                <h2 id="commentsTitle">Komentari</h2>
+                <textarea id="commentInput" placeholder="Ostavi svoj komentar..." aria-label="Komentari"></textarea><br><br>
+                <button id="addCommentBtn">Dodajte komentar</button>
+                <ul id="commentsList" aria-live="polite" aria-relevant="additions"></ul>
+              </div><br>
+
+              <footer>
+
+                &copy; 2025 FRB - Moj put ka lagodnosti i blaženstvu
+              </footer>
+
+              <script>
+                //Dnevnik zahvalnosti
+                const gratitudeBtn = document.getElementById('gratitudeBtn');
+                const gratitudeSection = document.getElementById('gratitudeSection');
+                const gratitudeInput = document.getElementById('gratitudeInput');
+                const saveGratitudeBtn = document.getElementById('saveGratitudeBtn');
+                const gratitudeSavedMsg = document.getElementById('gratitudeSavedMsg');
+
+                gratitudeBtn.addEventListener('click', () => {
+                    const expanded = gratitudeBtn.getAttribute('aria-expanded') === 'true';
+                    gratitudeBtn.setAttribute('aria-expanded', !expanded);
+                    gratitudeSection.style.display = expanded ? 'none' : 'block';
+                    gratitudeSection.setAttribute('aria-hidden', expanded);
+                    gratitudeSavedMsg.textContent = '';
+                    if (!expanded) gratitudeInput.focus();
+                } );
+
+                saveGratitudeBtn.addEventListener('click', () => {
+                    const text = gratitudeInput.value.trim();
+                    if(text.length === 0) {
+                        gratitudeSavedMsg.textContent = 'Molim te, napiši nešto za zahvalnost.';
+                        return;
+                    }
+                    localStorage.setItem('dailyGratitude', text);
+                    gratitudeSavedMsg.textContent = 'Tvoja zahvalnost je sačuvana. Hvala što njeguješ svoj mir';
+                    gratitudeInput.value = '';
+                } );
+                
+                //Komentari - ne čuvaju se trajno,samo u sesiji (refresh gubi ih)
+                const commentInput = document.getElementById('commentInput');
+                const addCommentBtn = document.getElementById('addCommentBtn');
+                const commentsList = document.getElementById('commentsList');
+
+                addCommentBtn.addEventListener('click', () => {
+                    const commentText = commentInput.value.trim();
+                    if(commentText.length === 0) return;
+                    const li = document.createElement('li');
+                    commentsList.appendChild(li);
+                    commentInput.value = '';
+                    commentInput.focus();
+                });
+                    
+                
+                </script> 
+            </body>
+</html>   
+

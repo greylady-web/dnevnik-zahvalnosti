@@ -255,7 +255,6 @@
               <div id="commentsSection">
                 <h2 id="commentsTitle">Komentari</h2>
                 <textarea id="commentInput" placeholder="Ostavi svoj komentar..." aria-label="Komentari"></textarea><br><br>
-               <textarea maxlength="300" rows="5" required></textarea>
                 <button id="addCommentBtn">Dodajte komentar</button>
                 <ul id="commentsList" aria-live="polite" aria-relevant="additions"></ul>
               </div><br>
@@ -282,15 +281,6 @@
                     if (!expanded) gratitudeInput.focus();
                 } );
 
-                function sanitizeInput(input) {
-                 const element = document.createElement('div');
-                 element.innerText = input;
-                 return element.innerHTML;
-                }
-
-               const userInput = document.querySelector('#textarea-id').value;
-               const safeInput = sanitizeInput(userInput);
-               // dalje koristi safeInput
 
                 saveGratitudeBtn.addEventListener('click', () => {
                     const text = gratitudeInput.value.trim();
@@ -303,17 +293,12 @@
                     gratitudeInput.value = '';
                 } );
 
-                 if (doucment.querySelector('[name="website"]').value !== "") {
-                  //spam pokušaj
-                  return false;
-                 }
                 
                 //Komentari - ne čuvaju se trajno,samo u sesiji (refresh gubi ih)
                 const commentInput = document.getElementById('commentInput');
                 const addCommentBtn = document.getElementById('addCommentBtn');
                 const commentsList = document.getElementById('commentsList');
 
-               document.addEventListener('contextmenu', e => e.preventDefault());
                
                 addCommentBtn.addEventListener('click', () => {
                     const commentText = commentInput.value.trim();

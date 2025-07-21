@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="google-site-verification" content="Vfd_PMTQdumQlApTUxSu_Xp1I2U_cjs0YD-G9FCcUhc" />
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self';">
        <title>Moj put ka miru i lagodnosti | 20.07.2025</title>
        <style>
         body {
@@ -247,6 +248,7 @@
               <button id="gratitudeBtn" aria-expanded="false" aria-controls="gratitudeSection">Otvorite dnevnik zahvalnosti</button><br><br>
               <section id="gratitudeSection" aria-hidden="true"><br>
               <textarea id="gratitudeInput" placeholder="Napišite za šta ste danas zahvalni..." aria-label="Dnevnik zahvalnosti"></textarea><br><br>
+               <input type="text" name="website" style="display:none">
               <button id="saveGratitudeBtn">Sačuvajte zahvalnost</button>
               <div id="gratitudeSavedMsg" role="status" aria-live="polite"></div>
               </section>  
@@ -254,6 +256,7 @@
               <div id="commentsSection">
                 <h2 id="commentsTitle">Komentari</h2>
                 <textarea id="commentInput" placeholder="Ostavi svoj komentar..." aria-label="Komentari"></textarea><br><br>
+               <textarea maxlength="300" rows="5" required></textarea>
                 <button id="addCommentBtn">Dodajte komentar</button>
                 <ul id="commentsList" aria-live="polite" aria-relevant="additions"></ul>
               </div><br>
@@ -280,6 +283,16 @@
                     if (!expanded) gratitudeInput.focus();
                 } );
 
+                function sanitizeInput(input) {
+                 const element = document.createElement('div');
+                 element.innerText = input;
+                 return element.innerHTML;
+                }
+
+               const userInput = document.querySelector('#textarea-id').value;
+               const safeInput = sanitizeInput(userInput);
+               // dalje koristi safeInput
+
                 saveGratitudeBtn.addEventListener('click', () => {
                     const text = gratitudeInput.value.trim();
                     if(text.length === 0) {
@@ -290,12 +303,19 @@
                     gratitudeSavedMsg.textContent = 'Tvoja zahvalnost je sačuvana. Hvala što njeguješ svoj mir';
                     gratitudeInput.value = '';
                 } );
+
+                 if (doucment.querySelector('[name="website"]').value !== "") {
+                  //spam pokušaj
+                  return false;
+                 }
                 
                 //Komentari - ne čuvaju se trajno,samo u sesiji (refresh gubi ih)
                 const commentInput = document.getElementById('commentInput');
                 const addCommentBtn = document.getElementById('addCommentBtn');
                 const commentsList = document.getElementById('commentsList');
 
+               document.addEventListener('contextmenu', e => e.preventDefault());
+               
                 addCommentBtn.addEventListener('click', () => {
                     const commentText = commentInput.value.trim();
                     if(commentText.length === 0) return;
